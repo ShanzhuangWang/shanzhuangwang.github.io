@@ -7,7 +7,7 @@ author_profile: true
 
 以下是我的个人职业发展路径与核心关注方向。
 
-## 🎋 Professional Experience
+## 🎋 Experience
 
 | Company | Role | Period | Focus Direction |
 | :--- | :--- | :--- | :--- |
