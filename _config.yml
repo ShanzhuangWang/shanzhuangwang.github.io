@@ -24,11 +24,12 @@ author:
   avatar           : "profile.png" # 稍后你可以把一张名为 profile.png 的熊猫或个人头像上传到 images 文件夹
   name             : "Panda"
   pronouns         : # example: "she/her"  
-  bio              : "Connecting elite LLM researchers, Infra wizards, and AGI pioneers."
+  bio              : "AI Talent Partner focused on foundation models and their applications." # 这里修改为你想要的个人新简介
   location         : "Hangzhou, China"
   employer         : "AGI Talent Partner"
   uri              : # URL
-  email            : "wsz0415@126.com" # 你的工作邮箱
+  email            : "wsz0415@126.com"
+  wechat           : "19818508519" # 👈 在这里填入你的真实微信号
 
   # Academic websites (猎头不需要学术链接，已全部清空隐藏)
   academia          : # URL
