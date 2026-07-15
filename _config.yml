@@ -200,18 +200,19 @@ kramdown:
   enable_coderay: false
 
 # These settings control the types of collections used by the template
+# (已全部修改为 false，彻底关闭无用的学术展示)
 collections:
   teaching:
-    output: true
+    output: false
     permalink: /:collection/:path/
   publications:
-    output: true
+    output: false
     permalink: /:collection/:path/
   portfolio:
-    output: true
+    output: false
     permalink: /:collection/:path/
   talks:
-    output: true
+    output: false
     permalink: /:collection/:path/
 
 # These settings control how pages and collections are included in the site
