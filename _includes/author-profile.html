@@ -37,8 +37,33 @@
         <li><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</a></li>
       {% endif %}
       {% if author.wechat %}
-        <li><a href="javascript:void(0);" title="微信号: {{ author.wechat }}"><i class="fab fa-fw fa-weixin" style="color: #1AAD19;" aria-hidden="true"></i> {{ author.wechat }}</a></li>
-      {% endif %}
+  <li>
+    <a href="javascript:void(0);" onclick="copyWeChat('{{ author.wechat }}')" title="点击复制微信号">
+      <i class="fab fa-fw fa-weixin" style="color: #1AAD19;" aria-hidden="true"></i> 
+      <span id="wechat-text">{{ author.wechat }}</span>
+      <span id="copy-tip" style="font-size: 11px; color: #1AAD19; margin-left: 5px; display: none;">(已复制!)</span>
+    </a>
+  </li>
+
+  <script>
+    function copyWeChat(wechatId) {
+      // 创建一个临时输入框来执行复制操作
+      const tempInput = document.createElement('input');
+      tempInput.value = wechatId;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      // 显示“已复制!”提示，2秒后自动消失
+      const tip = document.getElementById('copy-tip');
+      tip.style.display = 'inline';
+      setTimeout(() => {
+        tip.style.display = 'none';
+      }, 2000);
+    }
+  </script>
+{% endif %}
 
       <!-- Font Awesome and Academicons icons / Academic websites -->
       {% if author.academia %}
