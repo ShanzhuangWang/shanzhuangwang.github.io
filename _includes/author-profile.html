@@ -36,34 +36,78 @@
       {% if author.email %}
         <li><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</a></li>
       {% endif %}
+      
       {% if author.wechat %}
-  <li>
-    <a href="javascript:void(0);" onclick="copyWeChat('{{ author.wechat }}')" title="点击复制微信号">
-      <i class="fab fa-fw fa-weixin" style="color: #1AAD19;" aria-hidden="true"></i> 
-      <span id="wechat-text">{{ author.wechat }}</span>
-      <span id="copy-tip" style="font-size: 11px; color: #1AAD19; margin-left: 5px; display: none;">(已复制!)</span>
-    </a>
-  </li>
+      <li>
+        <a href="javascript:void(0);" onclick="copyWeChat('{{ author.wechat }}')" title="点击复制微信号">
+          <i class="fab fa-fw fa-weixin" style="color: #1AAD19;" aria-hidden="true"></i> 
+          <span id="wechat-text">{{ author.wechat }}</span>
+          <span id="copy-tip" style="font-size: 11px; color: #1AAD19; margin-left: 5px; display: none;">(已复制!)</span>
+        </a>
+      </li>
 
-  <script>
-    function copyWeChat(wechatId) {
-      // 创建一个临时输入框来执行复制操作
-      const tempInput = document.createElement('input');
-      tempInput.value = wechatId;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      document.execCommand('copy');
-      document.body.removeChild(tempInput);
+      <script>
+        function copyWeChat(wechatId) {
+          const showTip = function() {
+            const tip = document.getElementById('copy-tip');
+            if (tip) {
+              tip.style.display = 'inline';
+              setTimeout(function() {
+                tip.style.display = 'none';
+              }, 2000);
+            }
+          };
 
-      // 显示“已复制!”提示，2秒后自动消失
-      const tip = document.getElementById('copy-tip');
-      tip.style.display = 'inline';
-      setTimeout(() => {
-        tip.style.display = 'none';
-      }, 2000);
-    }
-  </script>
-{% endif %}
+          // 1. 优先使用现代安全剪贴板 API (完美支持 HTTPS 环境下的绝大多数设备)
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(wechatId).then(showTip).catch(function(err) {
+              useFallbackCopy(wechatId, showTip);
+            });
+          } else {
+            // 2. 如果不支持，降级使用专为 iOS/微信 优化过的隐形文本框复制方案
+            useFallbackCopy(wechatId, showTip);
+          }
+        }
+
+        function useFallbackCopy(text, callback) {
+          const textArea = document.createElement("textarea");
+          textArea.value = text;
+          // 防止页面在移动端发生奇怪的滚动，使用固定定位
+          textArea.style.position = "fixed";
+          textArea.style.top = "0";
+          textArea.style.left = "0";
+          textArea.style.opacity = "0";
+          // 确保输入框在 iOS 下不弹出虚拟键盘
+          textArea.setAttribute('readonly', '');
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+
+          // 针对 iOS 的特殊文本框选中逻辑
+          const isiOS = navigator.userAgent.match(/ipad|iphone/i);
+          if (isiOS) {
+            const range = document.createRange();
+            range.selectNodeContents(textArea);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            textArea.setSelectionRange(0, 999999);
+          }
+
+          try {
+            const successful = document.execCommand('copy');
+            if (successful) {
+              callback();
+            } else {
+              console.error('Copy command failed.');
+            }
+          } catch (err) {
+            console.error('Fallback copy error:', err);
+          }
+          document.body.removeChild(textArea);
+        }
+      </script>
+      {% endif %}
 
       <!-- Font Awesome and Academicons icons / Academic websites -->
       {% if author.academia %}
