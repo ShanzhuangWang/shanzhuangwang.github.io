@@ -1,23 +1,79 @@
 /* ============================================
    Reflections Page — Timeline Memo
-   Add / delete work reflections, persisted in localStorage
+   Password-locked editing:
+   - Public visitors can ONLY read (no add/delete buttons)
+   - Owner enters password to unlock edit mode
+   - Unlock state persists in sessionStorage (current tab)
+   - Data persisted in localStorage per device
    ============================================ */
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'panda_reflections_v1';
-  const timelineEl = document.getElementById('timeline');
-  const addBtn = document.getElementById('addEntryBtn');
-  const overlay = document.getElementById('modalOverlay');
-  const closeBtn = document.getElementById('modalClose');
-  const cancelBtn = document.getElementById('modalCancel');
-  const saveBtn = document.getElementById('modalSave');
-  const dateInput = document.getElementById('entryDate');
-  const titleInput = document.getElementById('entryTitle');
-  const bodyInput = document.getElementById('entryBody');
+  /* ========== CONFIG ========= */
+  var ADMIN_PASSWORD = 'panda2026';  // ← 改这里换密码
+  var SESSION_KEY = 'panda_admin_unlocked';
+  var STORAGE_KEY = 'panda_reflections_v1';
 
-  // --- Seed sample data (first visit only) ---
-  const SEED = [
+  /* ========== DOM refs ========= */
+  var timelineEl = document.getElementById('timeline');
+  var addBtn = document.getElementById('addEntryBtn');
+  var addWrapper = document.getElementById('addEntryWrapper');
+  var overlay = document.getElementById('modalOverlay');
+  var closeBtn = document.getElementById('modalClose');
+  var cancelBtn = document.getElementById('modalCancel');
+  var saveBtn = document.getElementById('modalSave');
+  var dateInput = document.getElementById('entryDate');
+  var titleInput = document.getElementById('entryTitle');
+  var bodyInput = document.getElementById('entryBody');
+  var pwdInput = document.getElementById('adminPwdInput');
+  var unlockBtn = document.getElementById('adminUnlockBtn');
+  var statusEl = document.getElementById('adminStatus');
+
+  /* ========== Auth helpers ========= */
+  function isUnlocked() {
+    return sessionStorage.getItem(SESSION_KEY) === '1';
+  }
+  function unlock() {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    applyLockState();
+  }
+  function applyLockState() {
+    var ok = isUnlocked();
+    // Show/hide admin UI elements
+    if (addWrapper) addWrapper.style.display = ok ? '' : 'none';
+    if (pwdInput) pwdInput.style.display = ok ? 'none' : '';
+    if (unlockBtn) unlockBtn.style.display = ok ? 'none' : '';
+    if (statusEl) statusEl.style.display = ok ? '' : 'none';
+    // Re-render timeline to show/hide delete buttons
+    render();
+  }
+
+  /* --- Unlock button handler --- */
+  if (unlockBtn) {
+    unlockBtn.addEventListener('click', function () {
+      var val = pwdInput ? pwdInput.value : '';
+      if (val === ADMIN_PASSWORD) {
+        unlock();
+        if (pwdInput) { pwdInput.value = ''; }
+      } else {
+        // Red border flash on wrong password
+        if (pwdInput) {
+          pwdInput.style.borderColor = '#EF4444';
+          setTimeout(function () { pwdInput.style.borderColor = ''; }, 1500);
+        }
+      }
+    });
+  }
+  if (pwdInput) {
+    pwdInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        if (unlockBtn) unlockBtn.click();
+      }
+    });
+  }
+
+  /* ========== Seed sample data (first visit only) ========== */
+  var SEED = [
     {
       id: 'seed-1',
       date: '2026-07-20',
@@ -39,7 +95,7 @@
   ];
 
   function load() {
-    let data;
+    var data;
     try {
       data = JSON.parse(localStorage.getItem(STORAGE_KEY));
     } catch (e) {
@@ -70,64 +126,74 @@
   }
 
   function formatDate(iso) {
-    // iso: YYYY-MM-DD -> "Jul 20, 2026" style, but keep Chinese-friendly
-    const parts = iso.split('-');
+    var parts = iso.split('-');
     if (parts.length !== 3) return iso;
-    const [y, m, d] = parts;
-    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    return `${monthNames[parseInt(m, 10) - 1]} ${parseInt(d, 10)}, ${y}`;
+    var y = parts[0], m = parts[1], d = parts[2];
+    var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return monthNames[parseInt(m, 10) - 1] + ' ' + parseInt(d, 10) + ', ' + y;
   }
 
   function render() {
-    let data = load();
+    var data = load();
+    var ok = isUnlocked();
     // Sort by date descending (newest first)
-    data.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+    data.sort(function (a, b) {
+      return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
+    });
 
     if (!data.length) {
       timelineEl.innerHTML =
-        '<p style="text-align:center;color:var(--gray-400);padding:40px 0;">还没有任何感悟，点击下方按钮写下第一条吧 🐼</p>';
+        '<p style="text-align:center;color:var(--gray-400);padding:40px 0;">' +
+        (ok ? '还没有任何感悟，点击下方按钮写下第一条吧 🐼' : '还没有发布任何感悟 🐼') +
+        '</p>';
       return;
     }
 
     timelineEl.innerHTML = data
       .map(function (item) {
-        const titleHtml = item.title
-          ? `<h4 class="timeline-card-title">${escapeHtml(item.title)}</h4>`
+        var titleHtml = item.title
+          ? '<h4 class="timeline-card-title">' + escapeHtml(item.title) + '</h4>'
           : '';
-        return `
-          <div class="timeline-item" data-id="${escapeHtml(item.id)}">
-            <div class="timeline-dot"></div>
-            <div class="timeline-date">${formatDate(item.date)}</div>
-            <div class="timeline-card">
-              ${titleHtml}
-              <p class="timeline-card-body">${escapeHtml(item.body).replace(/\n/g, '<br>')}</p>
-              <div class="timeline-actions">
-                <button class="timeline-delete" data-del="${escapeHtml(item.id)}">删除</button>
-              </div>
-            </div>
-          </div>`;
+        // Delete button only shown when unlocked
+        var actionsHtml = ok
+          ? '<div class="timeline-actions"><button class="timeline-delete" data-del="' +
+            escapeHtml(item.id) + '">删除</button></div>'
+          : '';
+        return (
+          '<div class="timeline-item" data-id="' + escapeHtml(item.id) + '">' +
+            '<div class="timeline-dot"></div>' +
+            '<div class="timeline-date">' + formatDate(item.date) + '</div>' +
+            '<div class="timeline-card">' +
+              titleHtml +
+              '<p class="timeline-card-body">' + escapeHtml(item.body).replace(/\n/g, '<br>') + '</p>' +
+              actionsHtml +
+            '</div>' +
+          '</div>'
+        );
       })
       .join('');
 
-    // Bind delete buttons
-    timelineEl.querySelectorAll('[data-del]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        const id = this.getAttribute('data-del');
-        let current = load();
-        current = current.filter(function (x) {
-          return x.id !== id;
+    // Bind delete buttons (only exist when unlocked)
+    if (ok) {
+      timelineEl.querySelectorAll('[data-del]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var id = this.getAttribute('data-del');
+          var current = load();
+          current = current.filter(function (x) {
+            return x.id !== id;
+          });
+          save(current);
+          render();
         });
-        save(current);
-        render();
       });
-    });
+    }
   }
 
-  // --- Modal controls ---
+  /* --- Modal controls --- */
   function openModal() {
-    // Default date = today
-    const now = new Date();
-    const today = now.toISOString().split('T')[0];
+    if (!isUnlocked()) return; // safety guard
+    var now = new Date();
+    var today = now.toISOString().split('T')[0];
     dateInput.value = today;
     titleInput.value = '';
     bodyInput.value = '';
@@ -142,9 +208,10 @@
   }
 
   function saveEntry() {
-    const date = dateInput.value || new Date().toISOString().split('T')[0];
-    const title = titleInput.value.trim();
-    const body = bodyInput.value.trim();
+    if (!isUnlocked()) return; // safety guard
+    var date = dateInput.value || new Date().toISOString().split('T')[0];
+    var title = titleInput.value.trim();
+    var body = bodyInput.value.trim();
     if (!body) {
       bodyInput.focus();
       bodyInput.style.borderColor = '#EF4444';
@@ -153,7 +220,7 @@
       }, 1500);
       return;
     }
-    const data = load();
+    var data = load();
     data.push({
       id: 'r-' + Date.now(),
       date: date,
@@ -165,7 +232,7 @@
     closeModal();
   }
 
-  // --- Bind events ---
+  /* --- Bind events --- */
   if (addBtn) addBtn.addEventListener('click', openModal);
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
   if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
@@ -181,6 +248,6 @@
     }
   });
 
-  // --- Initial render ---
-  render();
+  /* --- Initial render (read-only by default) --- */
+  applyLockState();
 })();

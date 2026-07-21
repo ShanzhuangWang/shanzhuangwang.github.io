@@ -71,15 +71,21 @@
     <div class="reflections-header reveal">
       <span class="section-eyebrow">Memo Timeline</span>
       <h2 class="section-title">感悟时间线</h2>
-      <p class="section-desc">点击底部按钮，按时间节点添加你的工作感想</p>
+      <p class="section-desc">记录 AGI 浪潮中的思考片段</p>
+      <!-- Admin lock (hidden by default, shown via JS) -->
+      <div id="adminLock" style="display:flex;align-items:center;gap:10px;margin-top:16px;justify-content:center;flex-wrap:wrap;">
+        <input type="password" id="adminPwdInput" placeholder="输入管理员密码解锁编辑" style="padding:8px 14px;border:1.5px solid var(--gray-200);border-radius:var(--radius-full);font-size:13px;width:220px;font-family:var(--font-sans);outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--bamboo-400)'" onblur="this.style.borderColor=''" />
+        <button id="adminUnlockBtn" style="padding:8px 20px;border-radius:var(--radius-full);border:none;background:var(--bamboo-700);color:white;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">🔓 解锁编辑</button>
+        <span id="adminStatus" style="font-size:12.5px;color:var(--bamboo-600);display:none;">✅ 已解锁，可自由编辑</span>
+      </div>
     </div>
 
     <div class="timeline" id="timeline">
       <!-- Entries will be rendered here by JS -->
     </div>
 
-    <!-- Add entry button -->
-    <div style="max-width: 720px; margin: 0 auto;">
+    <!-- Add entry button (hidden until admin unlocked) -->
+    <div id="addEntryWrapper" style="max-width:720px;margin:0 auto;display:none;">
       <button class="timeline-add-btn" id="addEntryBtn">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         添加一条感悟
