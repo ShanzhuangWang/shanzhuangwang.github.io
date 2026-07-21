@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panda · LLM &amp; AGI Talent Partner</title>
+  <meta name="description" content="专注 Foundation Models 与 AGI 前沿应用的 Talent Partner — 连接顶尖 AI 研究员、Infra 架构师与 AGI 时代的超级变革者" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;850&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='38' r='28' fill='%231A1A2E'/%3E%3Cellipse cx='40' cy='33' rx='6' ry='7' fill='white'/%3E%3Cellipse cx='60' cy='33' rx='6' ry='7' fill='white'/%3E%3Cellipse cx='42' cy='35' rx='3' ry='3.5' fill='%231A1A2E'/%3E%3Cellipse cx='58' cy='35' rx='3' ry='3.5' fill='%231A1A2E'/%3E%3Cellipse cx='50' cy='44' rx='5' ry='4' fill='%232D6A4F'/%3E%3Cpath d='M30 55 Q50 75 70 55' stroke='%231A1A2E' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cellipse cx='25' cy='52' rx='9' ry='6' fill='%231A1A2E' opacity='.15'/%3E%3Cellipse cx='75' cy='52' rx='9' ry='6' fill='%231A1A2E' opacity='.15'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+<!-- ============================================
+     HEADER / NAVIGATION
+     ============================================ -->
+<header class="header" id="header">
+  <div class="container">
+    <!-- Logo -->
+    <a href="#" class="logo">
+      <!-- Panda face SVG -->
+      <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="20" r="16" fill="#1A1A2E"/>
+        <ellipse cx="18" cy="17" rx="4.5" ry="5.5" fill="white"/>
+        <ellipse cx="30" cy="17" rx="4.5" ry="5.5" fill="white"/>
+        <circle cx="19" cy="18" r="2.3" fill="#1A1A2E"/>
+        <circle cx="29" cy="18" r="2.3" fill="#1A1A2E"/>
+        <ellipse cx="24" cy="24" rx="3.5" ry="2.8" fill="#2D6A4F"/>
+        <path d="M18 29 Q24 36 30 29" stroke="#1A1A2E" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <!-- Ears -->
+        <circle cx="10" cy="10" r="6" fill="#1A1A2E"/>
+        <circle cx="38" cy="10" r="6" fill="#1A1A2E"/>
+        <circle cx="10" cy="10" r="3" fill="#E8E8E8"/>
+        <circle cx="38" cy="10" r="3" fill="#E8E8E8"/>
+      </svg>
+      Panda
+    </a>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+      <a href="#about" class="nav-link active">About</a>
+      <a href="#focus" class="nav-link">Focus</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#why" class="nav-link">Why Me</a>
+      <a href="#connect" class="nav-link">Connect</a>
+      <a href="jobs.html" class="nav-link">🎯 Jobs</a>
+      <a href="reflections.html" class="nav-link">📝 Reflections</a>
+      <a href="#connect" class="header-cta">Let's Connect</a>
+    </nav>
+
+    <!-- Mobile toggle -->
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================
+     HERO SECTION
+     ============================================ -->
+<section class="hero" id="about">
+  <!-- Floating panda decorations (large) -->
+  <svg class="hero-panda-float left" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="45" rx="34" ry="32" fill="#1A1A2E"/>
+    <ellipse cx="46" cy="39" rx="9" ry="11" fill="white"/>
+    <ellipse cx="74" cy="39" rx="9" ry="11" fill="white"/>
+    <circle cx="48" cy="41" r="4.5" fill="#1A1A2E"/>
+    <circle cx="72" cy="41" r="4.5" fill="#1A1A2E"/>
+    <ellipse cx="60" cy="54" rx="6" ry="4.5" fill="#2D6A4F"/>
+    <path d="M44 64 Q60 78 76 64" stroke="#1A1A2E" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <circle cx="28" cy="22" r="12" fill="#1A1A2E"/>
+    <circle cx="92" cy="22" r="12" fill="#1A1A2E"/>
+    <circle cx="28" cy="22" r="6" fill="#E8E8E8"/>
+    <circle cx="92" cy="22" r="6" fill="#E8E8E8"/>
+    <!-- Body hint -->
+    <ellipse cx="60" cy="105" rx="26" ry="22" fill="#1A1A2E" opacity=".12"/>
+  </svg>
+
+  <svg class="hero-panda-float right" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="50" cy="38" rx="28" ry="26" fill="#1A1A2E"/>
+    <ellipse cx="39" cy="33" rx="7" ry="9" fill="white"/>
+    <ellipse cx="61" cy="33" rx="7" ry="9" fill="white"/>
+    <circle cx="40" cy="35" r="3.5" fill="#1A1A2E"/>
+    <circle cx="60" cy="35" r="3.5" fill="#1A1A2E"/>
+    <ellipse cx="50" cy="45" rx="5" ry="3.5" fill="#2D6A4F"/>
+    <path d="M37 53 Q50 65 63 53" stroke="#1A1A2E" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <circle cx="24" cy="18" r="10" fill="#1A1A2E"/>
+    <circle cx="76" cy="18" r="10" fill="#1A1A2E"/>
+    <circle cx="24" cy="18" r="5" fill="#E8E8E8"/>
+    <circle cx="76" cy="18" r="5" fill="#E8E8E8"/>
+  </svg>
+
+  <div class="hero-content">
+    <!-- Eyebrow badge -->
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span class="hero-badge-text">LLM &amp; AGI TALENT PARTNER</span>
+    </div>
+
+    <!-- Title with panda emoji bounce -->
+    <h1 class="hero-title">
+      你好，我是 Panda <span class="panda-emoji">&#x1F43C;</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      专注 Foundation Models 与 AGI 前沿应用的 Talent Partner<br />
+      连接顶尖 AI 研究员、Infra 架构师与 AGI 时代的超级变革者
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="hero-cta-row">
+      <a href="#connect" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        取得联系
+      </a>
+      <a href="#focus" class="btn-secondary">
+        了解我的方向
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+      </a>
+    </div>
+
+    <!-- Quote card -->
+    <div class="hero-quote-card">
+      <span class="hero-quote-mark">&#8220;</span>
+      <p class="hero-quote-text">以技术理解力为底座，用长期主义的态度做人才连接。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOCUS & EXPERTISE
+     ============================================ -->
+<section class="section focus-section" id="focus">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Focus &amp; Expertise</span>
+      <h2 class="section-title">核心关注与寻猎方向</h2>
+      <p class="section-desc">覆盖大模型与 AGI 全链路人才版图，从预训练到智能体落地</p>
+    </div>
+
+    <div class="focus-grid reveal">
+      <!-- Card 1: Foundation Models -->
+      <div class="focus-card card-fm">
+        <div class="focus-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/>
+            <line x1="12" y1="7.5" x2="12" y2="11.5"/><line x1="12" y1="11.5" x2="7" y2="17"/><line x1="12" y1="11.5" x2="17" y2="17"/>
+          </svg>
+        </div>
+        <h3 class="focus-card-title">Foundation Models</h3>
+        <p class="focus-card-desc">LLM / VLM 预训练、SFT、RLHF 强化学习算法专家 — 从模型架构到对齐方法全链路覆盖</p>
+      </div>
+
+      <!-- Card 2: AI Infra -->
+      <div class="focus-card card-infra">
+        <div class="focus-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+            <rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/>
+            <circle cx="7" cy="7" r="1.2" fill="currentColor" stroke="none"/><circle cx="7" cy="17" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <h3 class="focus-card-title">AI Infra</h3>
+        <p class="focus-card-desc">分布式训练、GPU 算力优化、推演加速、集群架构师 — 让算力不再是瓶颈</p>
+      </div>
+
+      <!-- Card 3: AI Agent -->
+      <div class="focus-card card-agent">
+        <div class="focus-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+            <rect x="4" y="8" width="16" height="12" rx="3"/>
+            <circle cx="9" cy="14" r="1.5" fill="currentColor" stroke="none"/>
+            <circle cx="15" cy="14" r="1.5" fill="currentColor" stroke="none"/>
+            <line x1="12" y1="4" x2="12" y2="8"/>
+            <circle cx="12" cy="3" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <h3 class="focus-card-title">AI Agent</h3>
+        <p class="focus-card-desc">智能体架构、多 Agent 协作系统、AGI 行业落地 — 从工具调用到自主规划</p>
+      </div>
+
+      <!-- Card 4: Multimodal -->
+      <div class="focus-card card-mm">
+        <div class="focus-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l8 4.5L12 12 4 7.5z"/>
+            <path d="M4 12l8 4.5 8-4.5"/>
+            <path d="M4 16.5l8 4.5 8-4.5"/>
+          </svg>
+        </div>
+        <h3 class="focus-card-title">Multimodal</h3>
+        <p class="focus-card-desc">语音多模态、CV 计算机视觉前沿探索 — 打通文本、图像与声音的边界</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     EXPERIENCE
+     ============================================ -->
+<section class="section experience-section" id="experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">&#x1F4CB; Experience</span>
+      <h2 class="section-title">职业经历</h2>
+      <p class="section-desc">个人职业发展路径与核心关注方向</p>
+    </div>
+
+    <div class="experience-table-wrap reveal">
+      <table class="experience-table">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Period</th>
+            <th>Focus Direction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="exp-company">Headhunting Firm</span><span class="current-badge">Present</span></td>
+            <td><span class="exp-role">Senior Consultant</span></td>
+            <td><span class="exp-period">2025.11 - Present</span></td>
+            <td><span class="exp-focus">LLM / VLM, Agents, AI Infra, Speech Multimodal, Search &amp; Recommendation LLMs</span></td>
+          </tr>
+          <tr>
+            <td><span class="exp-company">AI Agent Startup</span></td>
+            <td><span class="exp-role">HR</span></td>
+            <td><span class="exp-period">2025.06 - 2025.11</span></td>
+            <td><span class="exp-focus">Agent Development, Product Operations Recruitment</span></td>
+          </tr>
+          <tr>
+            <td><span class="exp-company">Alibaba (Taobao &amp; Tmall Group)</span></td>
+            <td><span class="exp-role">HR</span></td>
+            <td><span class="exp-period">2023.11 - 2025.06</span></td>
+            <td><span class="exp-focus">Search &amp; Recommendation LLMs, CV, Speech Multimodal</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     WHY WORK WITH ME
+     ============================================ -->
+<section class="section why-section" id="why">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Why Work With Me</span>
+      <h2 class="section-title">为什么选择与我合作？</h2>
+    </div>
+
+    <div class="why-quote-block reveal">
+      <p class="why-quote-text">
+        在 AGI 浪潮中，人才招聘不再是简单的简历匹配，而是对技术演进方向的深度共鸣。
+      </p>
+    </div>
+
+    <div class="why-grid reveal">
+      <!-- Reason 1 -->
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3 class="why-card-title">深度技术理解</h3>
+        <p class="why-card-desc">不只看标签，更懂不同架构（Transformer、Mamba 等）及算力瓶颈下的技术痛点。能与候选人在同一频道对话，精准判断技术深度与潜力。</p>
+      </div>
+
+      <!-- Reason 2 -->
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3 class="why-card-title">顶尖大厂与 Startup 绿道</h3>
+        <p class="why-card-desc">拥有头部大厂（Alibaba 等）、明星 AI Startup 的直接内推渠道。无论你向往稳定平台还是想加入创业团队加速成长，都能找到匹配路径。</p>
+      </div>
+
+      <!-- Reason 3 -->
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3 class="why-card-title">全周期职业咨询</h3>
+        <p class="why-card-desc">为你提供行业真实现状、薪酬风向标分析及长远职业路径规划。不只帮你找到下一份工作，更帮你规划未来三到五年的成长路线。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CONTACT SECTION
+     ============================================ -->
+<section class="section contact-section" id="connect">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Let's Connect</span>
+      <h2 class="section-title">取得联系</h2>
+      <p class="section-desc">
+        如果你正在寻找大模型或 Infra 方向的全新职业跃迁机会<br />或者你的团队正在寻找突破性的核心技术骨干，欢迎随时联系我
+      </p>
+    </div>
+
+    <!-- Contact cards -->
+    <div class="contact-grid reveal">
+      <!-- Email -->
+      <a href="mailto:wsz0415@126.com" class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <div class="contact-info">
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-value">wsz0415@126.com</div>
+        </div>
+      </a>
+
+      <!-- WeChat -->
+      <a href="weixin://dl/chat?19818508519" class="contact-card">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </div>
+        <div class="contact-info">
+          <div class="contact-info-label">WeChat</div>
+          <div class="contact-info-value">19818508519</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Social links (X + GitHub) -->
+    <div class="social-links reveal">
+      <a href="https://x.com/Thinking_Panda_" target="_blank" rel="noopener noreferrer" class="social-link">
+        <!-- X/Twitter icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        @Thinking_Panda_
+      </a>
+      <a href="https://github.com/ShanzhuangWang" target="_blank" rel="noopener noreferrer" class="social-link">
+        <!-- GitHub icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+        </svg>
+        ShanzhuangWang
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-quote">&#x1F43C; 在通往 AGI 的路上，我们并肩同行。</p>
+    <p class="footer-copy">&copy; 2024 Panda &middot; LLM &amp; AGI Talent Partner</p>
+
+    <nav class="footer-nav">
+      <a href="#">Home</a>
+      <a href="#focus">Focus</a>
+      <a href="#experience">Experience</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="reflections.html">Reflections</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ============================================
+     SCRIPTS
+     ============================================ -->
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reflections · Panda LLM &amp; AGI Talent Partner</title>
+  <meta name="description" content="工作感想与感悟 — 时间线备忘录，记录 AGI 浪潮中的思考片段" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;850&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='38' r='28' fill='%231A1A2E'/%3E%3Cellipse cx='40' cy='33' rx='6' ry='7' fill='white'/%3E%3Cellipse cx='60' cy='33' rx='6' ry='7' fill='white'/%3E%3Cellipse cx='42' cy='35' rx='3' ry='3.5' fill='%231A1A2E'/%3E%3Cellipse cx='58' cy='35' rx='3' ry='3.5' fill='%231A1A2E'/%3E%3Cellipse cx='50' cy='44' rx='5' ry='4' fill='%232D6A4F'/%3E%3Cpath d='M30 55 Q50 75 70 55' stroke='%231A1A2E' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cellipse cx='25' cy='52' rx='9' ry='6' fill='%231A1A2E' opacity='.15'/%3E%3Cellipse cx='75' cy='52' rx='9' ry='6' fill='%231A1A2E' opacity='.15'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+<!-- ============================================
+     HEADER / NAVIGATION
+     ============================================ -->
+<header class="header" id="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="20" r="16" fill="#1A1A2E"/>
+        <ellipse cx="18" cy="17" rx="4.5" ry="5.5" fill="white"/>
+        <ellipse cx="30" cy="17" rx="4.5" ry="5.5" fill="white"/>
+        <circle cx="19" cy="18" r="2.3" fill="#1A1A2E"/>
+        <circle cx="29" cy="18" r="2.3" fill="#1A1A2E"/>
+        <ellipse cx="24" cy="24" rx="3.5" ry="2.8" fill="#2D6A4F"/>
+        <path d="M18 29 Q24 36 30 29" stroke="#1A1A2E" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <circle cx="10" cy="10" r="6" fill="#1A1A2E"/>
+        <circle cx="38" cy="10" r="6" fill="#1A1A2E"/>
+        <circle cx="10" cy="10" r="3" fill="#E8E8E8"/>
+        <circle cx="38" cy="10" r="3" fill="#E8E8E8"/>
+      </svg>
+      Panda
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#focus" class="nav-link">Focus</a>
+      <a href="index.html#experience" class="nav-link">Experience</a>
+      <a href="index.html#why" class="nav-link">Why Me</a>
+      <a href="index.html#connect" class="nav-link">Connect</a>
+      <a href="jobs.html" class="nav-link">🎯 Jobs</a>
+      <a href="reflections.html" class="nav-link active">📝 Reflections</a>
+      <a href="index.html#connect" class="header-cta">Let's Connect</a>
+    </nav>
+
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================
+     PAGE HERO (MINI)
+     ============================================ -->
+<section class="page-hero-mini" id="reflections">
+  <div class="container">
+    <span class="section-eyebrow">📝 Reflections &amp; Thoughts</span>
+    <h1>工作感想与感悟</h1>
+    <p>在 AGI 浪潮中，记录每一个思考的瞬间 — 像熊猫一样慢慢咀嚼，细细品味</p>
+  </div>
+</section>
+
+<!-- ============================================
+     TIMELINE / MEMO
+     ============================================ -->
+<div class="reflections-section">
+  <div class="container">
+    <div class="reflections-header reveal">
+      <span class="section-eyebrow">Memo Timeline</span>
+      <h2 class="section-title">感悟时间线</h2>
+      <p class="section-desc">点击底部按钮，按时间节点添加你的工作感想</p>
+    </div>
+
+    <div class="timeline" id="timeline">
+      <!-- Entries will be rendered here by JS -->
+    </div>
+
+    <!-- Add entry button -->
+    <div style="max-width: 720px; margin: 0 auto;">
+      <button class="timeline-add-btn" id="addEntryBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        添加一条感悟
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-quote">🐼 在通往 AGI 的路上，我们并肩同行。</p>
+    <p class="footer-copy">&copy; 2024 Panda &middot; LLM &amp; AGI Talent Partner</p>
+
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#focus">Focus</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="reflections.html">Reflections</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Modal for adding entries -->
+<div class="modal-overlay" id="modalOverlay" style="display:none;">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>✍️ 写一条工作感悟</h3>
+      <button class="modal-close" id="modalClose">&times;</button>
+    </div>
+    <div class="modal-body">
+      <label class="modal-label">日期</label>
+      <input type="date" id="entryDate" class="modal-input" />
+      <label class="modal-label">标题（可选）</label>
+      <input type="text" id="entryTitle" class="modal-input" placeholder="例如：关于 Agent 招聘的一点思考" />
+      <label class="modal-label">感悟内容</label>
+      <textarea id="entryBody" class="modal-textarea" rows="5" placeholder="写下你的思考..."></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn-cancel" id="modalCancel">取消</button>
+      <button class="modal-btn-save" id="modalSave">保存</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(27, 67, 50, 0.4);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px; animation: fadeInDown 0.25s ease-out;
+  }
+  .modal-card {
+    background: white; border-radius: var(--radius-lg);
+    width: 100%; max-width: 480px; box-shadow: var(--shadow-xl);
+    overflow: hidden; animation: fadeInUp 0.3s ease-out;
+  }
+  .modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 24px; border-bottom: 1px solid var(--gray-100);
+  }
+  .modal-header h3 { font-size: 17px; font-weight: 650; color: var(--panda-black); }
+  .modal-close {
+    background: none; border: none; font-size: 26px; color: var(--gray-400);
+    cursor: pointer; line-height: 1; padding: 0 4px;
+  }
+  .modal-close:hover { color: var(--gray-700); }
+  .modal-body { padding: 24px; }
+  .modal-label {
+    display: block; font-size: 13px; font-weight: 550; color: var(--gray-500);
+    margin: 14px 0 6px; letter-spacing: 0.3px;
+  }
+  .modal-label:first-child { margin-top: 0; }
+  .modal-input, .modal-textarea {
+    width: 100%; padding: 11px 14px; border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius-sm); font-family: var(--font-sans); font-size: 14.5px;
+    color: var(--gray-700); transition: border-color var(--transition-fast);
+    resize: vertical;
+  }
+  .modal-input:focus, .modal-textarea:focus {
+    outline: none; border-color: var(--bamboo-400);
+  }
+  .modal-footer {
+    display: flex; gap: 12px; padding: 16px 24px 22px; justify-content: flex-end;
+  }
+  .modal-btn-cancel, .modal-btn-save {
+    padding: 10px 22px; border-radius: var(--radius-full); font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all var(--transition-base); border: none;
+  }
+  .modal-btn-cancel { background: var(--gray-100); color: var(--gray-600); }
+  .modal-btn-cancel:hover { background: var(--gray-200); }
+  .modal-btn-save { background: var(--bamboo-700); color: white; }
+  .modal-btn-save:hover { background: var(--bamboo-800); }
+  .timeline-actions {
+    display: flex; gap: 8px; margin-top: 12px;
+  }
+  .timeline-delete {
+    font-size: 12.5px; color: var(--gray-400); cursor: pointer;
+    background: none; border: none; padding: 4px 8px; border-radius: 6px;
+    transition: color var(--transition-fast);
+  }
+  .timeline-delete:hover { color: #EF4444; background: #FEF2F2; }
+</style>
+
+<script src="js/reflections.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
