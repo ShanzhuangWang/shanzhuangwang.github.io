@@ -72,12 +72,6 @@
       <span class="section-eyebrow">Memo Timeline</span>
       <h2 class="section-title">感悟时间线</h2>
       <p class="section-desc">记录 AGI 浪潮中的思考片段</p>
-      <!-- Admin lock (hidden by default, shown via JS) -->
-      <div id="adminLock" style="display:flex;align-items:center;gap:10px;margin-top:16px;justify-content:center;flex-wrap:wrap;">
-        <input type="password" id="adminPwdInput" placeholder="输入管理员密码解锁编辑" style="padding:8px 14px;border:1.5px solid var(--gray-200);border-radius:var(--radius-full);font-size:13px;width:220px;font-family:var(--font-sans);outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--bamboo-400)'" onblur="this.style.borderColor=''" />
-        <button id="adminUnlockBtn" style="padding:8px 20px;border-radius:var(--radius-full);border:none;background:var(--bamboo-700);color:white;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">🔓 解锁编辑</button>
-        <span id="adminStatus" style="font-size:12.5px;color:var(--bamboo-600);display:none;">✅ 已解锁，可自由编辑</span>
-      </div>
     </div>
 
     <div class="timeline" id="timeline">
@@ -90,6 +84,22 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         添加一条感悟
       </button>
+    </div>
+
+    <!-- Admin lock (at the bottom of the section) -->
+    <div id="adminLock" style="max-width:720px;margin:32px auto 0;padding-top:24px;border-top:1px solid var(--gray-100);text-align:center;">
+      <div id="adminLockedView">
+        <p style="font-size:13px;color:var(--gray-400);margin-bottom:12px;">🐼 管理员入口</p>
+        <div style="display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <input type="password" id="adminPwdInput" placeholder="输入管理员密码解锁编辑" style="padding:8px 14px;border:1.5px solid var(--gray-200);border-radius:var(--radius-full);font-size:13px;width:220px;font-family:var(--font-sans);outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--bamboo-400)'" onblur="this.style.borderColor=''" />
+          <button id="adminUnlockBtn" style="padding:8px 20px;border-radius:var(--radius-full);border:none;background:var(--bamboo-700);color:white;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;">🔓 解锁编辑</button>
+        </div>
+      </div>
+      <div id="adminUnlockedView" style="display:none;">
+        <p id="adminStatus" style="font-size:13px;color:var(--bamboo-600);margin-bottom:12px;">✅ 已解锁，可自由添加/删除感悟</p>
+        <button id="exportDataBtn" style="padding:8px 20px;border-radius:var(--radius-full);border:1.5px solid var(--bamboo-400);background:white;color:var(--bamboo-700);font-size:13px;font-weight:600;cursor:pointer;">📋 复制最新数据（用于更新网站）</button>
+        <p style="font-size:11.5px;color:var(--gray-400);margin-top:8px;">编辑后点上面按钮复制数据，发给助手更新到网站</p>
+      </div>
     </div>
   </div>
 </div>
