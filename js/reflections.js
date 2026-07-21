@@ -26,6 +26,7 @@
   var bodyInput = document.getElementById('entryBody');
   var pwdInput = document.getElementById('adminPwdInput');
   var unlockBtn = document.getElementById('adminUnlockBtn');
+  var lockBtn = document.getElementById('adminLockBtn');
   var lockedView = document.getElementById('adminLockedView');
   var unlockedView = document.getElementById('adminUnlockedView');
   var exportBtn = document.getElementById('exportDataBtn');
@@ -59,6 +60,10 @@
   }
   function unlock() {
     sessionStorage.setItem(SESSION_KEY, '1');
+    applyLockState();
+  }
+  function lock() {
+    sessionStorage.removeItem(SESSION_KEY);
     applyLockState();
   }
 
@@ -115,6 +120,13 @@
           setTimeout(function () { pwdInput.style.borderColor = ''; }, 1500);
         }
       }
+    });
+  }
+
+  /* --- Lock button handler (manually lock back to read-only) --- */
+  if (lockBtn) {
+    lockBtn.addEventListener('click', function () {
+      lock();
     });
   }
   if (pwdInput) {

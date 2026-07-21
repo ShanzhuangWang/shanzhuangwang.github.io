@@ -97,8 +97,11 @@
       </div>
       <div id="adminUnlockedView" style="display:none;">
         <p id="adminStatus" style="font-size:13px;color:var(--bamboo-600);margin-bottom:12px;">✅ 已解锁，可自由添加/删除感悟</p>
-        <button id="exportDataBtn" style="padding:8px 20px;border-radius:var(--radius-full);border:1.5px solid var(--bamboo-400);background:white;color:var(--bamboo-700);font-size:13px;font-weight:600;cursor:pointer;">📋 复制最新数据（用于更新网站）</button>
-        <p style="font-size:11.5px;color:var(--gray-400);margin-top:8px;">编辑后点上面按钮复制数据，发给助手更新到网站</p>
+        <div style="display:flex;align-items:center;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <button id="exportDataBtn" style="padding:8px 20px;border-radius:var(--radius-full);border:1.5px solid var(--bamboo-400);background:white;color:var(--bamboo-700);font-size:13px;font-weight:600;cursor:pointer;">📋 复制最新数据（用于更新网站）</button>
+          <button id="adminLockBtn" style="padding:8px 20px;border-radius:var(--radius-full);border:1.5px solid var(--gray-300);background:var(--gray-100);color:var(--gray-600);font-size:13px;font-weight:600;cursor:pointer;">🔒 锁定编辑</button>
+        </div>
+        <p style="font-size:11.5px;color:var(--gray-400);margin-top:8px;">编辑完点「复制最新数据」发给助手更新，再点「锁定编辑」锁回只读模式</p>
       </div>
     </div>
   </div>
